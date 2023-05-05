@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import ListItem from '../components/ListItem'
 
-const NotesListPages = () => {
+const NotesListPage = () => {
  
     let [notes, setNotes] = useState([])
 
@@ -10,7 +10,7 @@ const NotesListPages = () => {
     }, [])
 
     let getNotes = async () => {
-      let response = await fetch('/api/notes/')
+      let response = await fetch('/api/notes')
       let data = await response.json()
       setNotes(data) 
     }
@@ -27,4 +27,4 @@ const NotesListPages = () => {
   )
 }
 
-export default NotesListPages
+export default NotesListPage

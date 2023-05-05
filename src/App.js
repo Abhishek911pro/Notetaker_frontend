@@ -1,31 +1,39 @@
 import {
   BrowserRouter as Router,
   Routes,
-  Route
+  Route,
+  
 } from "react-router-dom";
 
 
 import './App.css';
-import Header from './components/Header'
-import NotesListPage from './pages/NotesListPages'
-import NotePage from './pages/NotePage'
+import Header from './components/Header';
+import NotesListPage from './pages/NotesListPage';
+import NotePage from './pages/NotePage';
+
+
 
 function App() {
   return (
     <Router>
       
-        <div className="App">
+        <div className="App">   
         <Header/>
         <Routes>
-        <Route path="/" exact Component={NotesListPage}/>
+
+        <Route exact path="/" element={<NotesListPage/>}/>
+        <Route path="/note/${id}" element={<NotePage/>}/>
+        
         </Routes>
-        <Routes>
-        <Route path="/note/:id" Component={NotePage}/>
-        </Routes>
+        
+        
+        
+        
+        
         </div>
         
+   
     </Router>
-    
   );
 }
 

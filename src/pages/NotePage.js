@@ -1,11 +1,14 @@
 import React from 'react'
+import { useParams } from 'react-router-dom';
 
-const NotePage = ({match}) => {
+
+function NotePage() {
+
+  let noteId = useParams.id;
+
   return (
     <div>
-        <h1>
-           single note 
-        </h1>
+        <h1>single note {noteId}</h1>
     </div>
   )
 }
