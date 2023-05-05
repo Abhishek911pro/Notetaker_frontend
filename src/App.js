@@ -22,7 +22,7 @@ function App() {
         <Routes>
 
         <Route exact path="/" element={<NotesListPage/>}/>
-        <Route path="/note/${id}" element={<NotePage/>}/>
+        <Route path="/note/:id" element={<NotePage/>}/>
         
         </Routes>
         

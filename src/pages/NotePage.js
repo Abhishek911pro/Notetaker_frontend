@@ -2,15 +2,15 @@ import React from 'react'
 import { useParams } from 'react-router-dom';
 
 
-function NotePage() {
+const NotePage = () => {
+ const {id} = useParams()
 
-  let noteId = useParams.id;
-
-  return (
+  return(
     <div>
-        <h1>single note {noteId}</h1>
+      <h1>single note {id}</h1>
     </div>
   )
 }
 
-export default NotePage
+
+export default NotePage;
