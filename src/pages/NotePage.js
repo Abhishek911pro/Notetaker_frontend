@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom';
+import { useParams,  useNavigate } from 'react-router-dom';
+import {  ReactComponent as ArrowLeft } from '../assets/arrow-left.svg';
 
 
 const NotePage = () => {
+  const navigate  = useNavigate();
  const {id} = useParams();
  let [note,setNote] = useState(null)
 
@@ -17,9 +19,32 @@ const NotePage = () => {
   setNote(data)
  }
 
+ let updateNote = async () => {
+  fetch(`api/notes/${id}/update/`, {
+    method: "PUT",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(note)
+  })
+ }
+
+ let handleSubmit = ()=> {
+    updateNote();
+    navigate('/')  
+ };
+
   return(
+    
     <div className="note">
-      <textarea defaultValue={note?.body}></textarea>
+      <div className="note-header">
+        <h3>
+          
+            <ArrowLeft onClick={handleSubmit}/>
+         
+        </h3>
+      </div>
+      <textarea onChange={(e) => {setNote({...note, 'body': e.target.value })}} defaultValue={note?.body}></textarea>
     </div>
   )
 }
